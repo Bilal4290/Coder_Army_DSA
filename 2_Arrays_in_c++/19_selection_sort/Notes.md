@@ -170,6 +170,69 @@ Repeat Until Sorted
 
 ---
 
+# Selection Sort in C++
+
+## Code
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to perform Selection Sort
+void selectionSort(vector<int>& arr) {
+    int n = arr.size();
+
+    // Move boundary of unsorted subarray
+    for (int i = 0; i < n - 1; i++) {
+        // Assume the current element is the minimum
+        int minIndex = i;
+
+        // Find the minimum element in the unsorted part
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Swap the found minimum with the first unsorted element
+        if (minIndex != i) {
+            swap(arr[i], arr[minIndex]);
+        }
+    }
+}
+
+// Function to print the array
+void printArray(const vector<int>& arr) {
+    for (int num : arr)
+        cout << num << " ";
+    cout << endl;
+}
+
+int main() {
+    vector<int> data = {50, 20, 40, 10, 30};
+
+    cout << "Original Array: ";
+    printArray(data);
+
+    selectionSort(data);
+
+    cout << "Sorted Array: ";
+    printArray(data);
+
+    return 0;
+}
+
+
+### ✅ Sample Output
+
+Original Array: 50 20 40 10 30 
+Sorted Array: 10 20 30 40 50
+
+
+---
+
+
 # 🧱 What Are the Limitations of Selection Sort?
 
 | Limitation | Explanation | Analogy |
@@ -320,5 +383,7 @@ Use Insertion Sort for sorted/nearly sorted data:
 
 - **Selection Sort = Blind Worker 👨‍🔧**: Checks everything every time  
 - **Insertion Sort = Smart Worker 🧠**: Stops early if sorted
+
+
 
 
